@@ -1,0 +1,60 @@
+<div class="layout-container">
+  <div class="layout-header">
+    <div class="header-top">
+      <div class="logo">
+        <img src="assets/images/workbench/logo.png" alt="logo">
+      </div>
+      <div class="action">
+        <div class="search">
+          <nz-input-group nzPrefixIcon="search">
+            <input nz-input placeholder="请搜索" [(ngModel)]="searchValue" (change)="search()" />
+          </nz-input-group>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="layout-main">
+    <div class="menu-wrapper">
+      <div class="userinfo">
+        <a nz-dropdown [nzDropdownMenu]="menu">
+          <p><img src="assets/images/common/account.png" alt="account"></p>
+          <p class="username">
+            <span>王尚明</span>
+            <!-- <i nz-icon nzType="caret-down" nzTheme="fill"></i> -->
+          </p>
+        </a>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+          <ul nz-menu>
+            <li nz-menu-item (click)="logout()">安全退出</li>
+          </ul>
+        </nz-dropdown-menu>
+      </div>
+      <div class="nav-menu">
+        <nav>
+          <a 
+            *ngFor="let item of menus"
+            [routerLink]="item.path" 
+            routerLinkActive="active"
+            (click)="handleClickMenu(item.path)"
+          >
+            <span class="icon">
+              <img [src]="currentUrl === item.path ? item.active : item.icon" alt="active">
+            </span>
+            <span>{{ item.name }}</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+    <div class="layout-content">
+      <div class="quick-nav">
+        <div class="top">
+          <span>{{ currentMenuName }}</span>
+        </div>
+      </div>
+      <div class="router-wrapper">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
