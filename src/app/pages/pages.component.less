@@ -27,6 +27,8 @@
     height: 100%;
     margin-left: 220px;
     flex-direction: column;
+    background: url('../../assets/images/workbench/watermark.png') no-repeat left bottom;
+    background-size: auto;
     
     .quick-nav {
       display: flex;
@@ -61,6 +63,13 @@
     justify-content: flex-end;
     height: 100%;
     padding: 0 1.7rem;
+  }
+  .info {
+    font-size: 1rem;
+    color: #fff;
+    p {
+      margin: 0;
+    }
   }
   .search {
     display: flex;
@@ -104,7 +113,7 @@
     margin-top: 1rem;
     color: #333;
   }
-  .anticon-down {
+  .anticon {
     margin-left: 0.5rem;
     color: #333;
   }
@@ -169,6 +178,31 @@
       text-align: center;
       background: #FFF;
       border-radius: 0.43rem 0.43rem 0 0;
+    }
+  }
+  .action {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 3.25rem;
+    padding: 0 1.7rem;
+    background: #fff;
+  }
+  .search {
+    display: flex;
+    height: 2.2rem;
+    .ant-input-affix-wrapper {
+      border-radius: 1.29rem;
+      background-color: rgba(255,255,255,.5);
+      border-color: #DEDEDE;;
+      color: #AFAFAF;
+      .ant-input {
+        background: none;
+        color: #AFAFAF;
+        &::placeholder {
+          color: #AFAFAF;
+        }
+      }
     }
   }
 }

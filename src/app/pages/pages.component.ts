@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import axios from 'axios';
 
 @Component({
   selector: 'ngx-pages',
@@ -15,6 +16,12 @@ export class PagesComponent {
   currentMenuName: string = '工作台';
 
   currentUrl: string = this.router.routerState.snapshot.url;
+
+  weatherData = {
+    days: null,
+    weather: null,
+    temperature: null
+  };
 
   menus = [
     {
@@ -55,5 +62,17 @@ export class PagesComponent {
 
   handleClickMenu(currentUrl: string) {
     this.currentUrl = currentUrl;
+  }
+
+  async getWeather() {
+    const url = 'http://api.k780.com:88/?app=weather.today&weaid=1&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json';
+    const { data } = await axios.get(url);
+    if (data) {
+      this.weatherData = data.result;
+    }
+  }
+
+  ngOnInit() {
+    this.getWeather();
   }
 }
